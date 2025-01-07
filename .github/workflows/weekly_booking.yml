@@ -25,4 +25,5 @@ jobs:
 
     - name: Run Weekly Booking Script
       run: |
+        echo "Log level
         python weekly_booking.py
