@@ -25,5 +25,5 @@ jobs:
 
     - name: Run Weekly Booking Script
       run: |
-        echo "Log level
+        echo "Log level"
         python clc.py
