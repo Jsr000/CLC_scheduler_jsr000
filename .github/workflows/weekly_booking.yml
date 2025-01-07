@@ -24,4 +24,4 @@ jobs:
 
     - name: Run Weekly Booking Script
       run: |
-        python weekly_booking.py 1 3
+        python weekly_booking.py
