@@ -49,5 +49,5 @@ if __name__ == "__main__":
         target_weekday = int(sys.argv[1])
         book_clc_room(target_weekday)
     else:
-        book_clc_room(1)
-        book_clc_room(3)
+        for i in range(4):
+            book_clc_room(i)
