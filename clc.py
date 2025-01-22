@@ -46,6 +46,8 @@ def book_clc_room(weekday, token, cookie):
 if __name__ == "__main__":
     token = sys.argv[1]
     cookie = sys.argv[2]
+    print(token)
+    print(cookie)
     if len(sys.argv) >= 4:
         target_weekday = int(sys.argv[3])
         book_clc_room(target_weekday, token, cookie)
