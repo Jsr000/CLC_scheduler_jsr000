@@ -24,5 +24,9 @@ jobs:
         pip install requests
 
     - name: Run Weekly Booking Script
+      env: 
+        DENNIS_SESSION_COOKIE: ${{ secrets.DENNIS_SESSION_COOKIE }}
+        DENNIS_TOKEN: ${{ secrets.DENNIS_TOKEN }}
       run: |
-        python clc.py
+        echo "$DENNIS_TOKEN"
+        python clc.py "$DENNIS_TOKEN" "$DENNIS_SESSION_COOKIE"

@@ -3,7 +3,7 @@ import datetime
 import sys
 
 
-def book_clc_room(weekday):
+def book_clc_room(weekday, token, cookie):
     def get_next_weekday(current_date, target_weekday):
         days_ahead = (target_weekday - current_date.weekday() + 7) % 7
         if days_ahead == 0:
@@ -11,7 +11,7 @@ def book_clc_room(weekday):
         return current_date + datetime.timedelta(days=days_ahead)
 
     def create_payload(date):
-        return f'csrf_token=8d18a87176a2516a7d306d6e97bc1f2741ab31e55353fe056eadcdfc821fdd8f&returl=https%3A%2F%2Fbooking.sauder.ubc.ca%2Fclc%2Findex.php%3Fview%3Dday%26page_date%3D{date}%26area%3D6%26room%3D30&rep_id=0&edit_type=series&create_by=dennis34&name=STUDY&description=STUDY&start_date={date}&start_seconds=45000&end_date={date}&end_seconds=52200&area=6&rooms%5B%5D=30'
+        return f'csrf_token={token}&returl=https%3A%2F%2Fbooking.sauder.ubc.ca%2Fclc%2Findex.php%3Fview%3Dday%26page_date%3D{date}%26area%3D6%26room%3D30&rep_id=0&edit_type=series&create_by=dennis34&name=STUDY&description=STUDY&start_date={date}&start_seconds=45000&end_date={date}&end_seconds=52200&area=6&rooms%5B%5D=30'
 
     today = datetime.date.today()
     target = get_next_weekday(today, weekday)
@@ -26,7 +26,7 @@ def book_clc_room(weekday):
     'Cache-Control': 'max-age=0',
     'Connection': 'keep-alive',
     'Content-Type': 'application/x-www-form-urlencoded',
-    'Cookie': 'MRBS_SESSID=nqns1fuhotoufmen7ungllpgb3; _shibsession_636c6368747470733a2f2f626f6f6b696e672e7361756465722e7562632e63612f636c632f73686962626f6c6574682d7370=_474cd76e575f97d7b82b1f5187755e09; MRBS_SESSID=i1dbqhfbctl4uhrun8b9kuuke5',
+    'Cookie': cookie,
     'DNT': '1',
     'Origin': 'https://booking.sauder.ubc.ca',
     'Referer': 'https://booking.sauder.ubc.ca/clc/edit_entry.php?drag=1&area=6&start_seconds=45000&end_seconds=52200&rooms[]=30&start_date=2025-01-09',
@@ -44,10 +44,11 @@ def book_clc_room(weekday):
     print(response)
 
 if __name__ == "__main__":
-
-    if len(sys.argv) >= 2:
-        target_weekday = int(sys.argv[1])
-        book_clc_room(target_weekday)
+    token = sys.argv[1]
+    cookie = sys.argv[2]
+    if len(sys.argv) >= 4:
+        target_weekday = int(sys.argv[3])
+        book_clc_room(target_weekday, token, cookie)
     else:
         for i in range(4):
-            book_clc_room(i)
+            book_clc_room(i, token, cookie)
