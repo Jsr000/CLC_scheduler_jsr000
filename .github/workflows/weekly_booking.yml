@@ -28,5 +28,4 @@ jobs:
         DENNIS_SESSION_COOKIE: ${{ secrets.DENNIS_SESSION_COOKIE }}
         DENNIS_TOKEN: ${{ secrets.DENNIS_TOKEN }}
       run: |
-        echo "$DENNIS_TOKEN"
         python clc.py "$DENNIS_TOKEN" "$DENNIS_SESSION_COOKIE"
