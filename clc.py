@@ -10,8 +10,12 @@ def book_clc_room(weekday, token, cookie):
             days_ahead = 7 
         return current_date + datetime.timedelta(days=days_ahead)
 
-    def create_payload(date):
-        return f'csrf_token={token}&returl=https%3A%2F%2Fbooking.sauder.ubc.ca%2Fclc%2Findex.php%3Fview%3Dday%26page_date%3D{date}%26area%3D6%26room%3D30&rep_id=0&edit_type=series&create_by=dennis34&name=STUDY&description=STUDY&start_date={date}&start_seconds=45000&end_date={date}&end_seconds=52200&area=6&rooms%5B%5D=30'
+    def create_payload(date, weekday):
+        start_time, end_time = 45000, 52200
+        if weekday == 1 or 3:
+            start_time = 37800
+            end_time = 45000
+        return f'csrf_token={token}&returl=https%3A%2F%2Fbooking.sauder.ubc.ca%2Fclc%2Findex.php%3Fview%3Dday%26page_date%3D{date}%26area%3D6%26room%3D30&rep_id=0&edit_type=series&create_by=jsr000&name=LOCKED&description=IN&start_date={date}&start_seconds={start_time}&end_date={date}&end_seconds={end_time}&area=6&rooms%5B%5D=31'
 
     today = datetime.date.today()
     target = get_next_weekday(today, weekday)
