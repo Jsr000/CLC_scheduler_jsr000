@@ -25,7 +25,7 @@ jobs:
 
     - name: Run Weekly Booking Script
       env: 
-        DENNIS_SESSION_COOKIE: ${{ secrets.JASON_SESSION_COOKIE }}
-        DENNIS_TOKEN: ${{ secrets.JASON_TOKEN }}
+        JASON_SESSION_COOKIE: ${{ secrets.JASON_SESSION_COOKIE }}
+        JASON_TOKEN: ${{ secrets.JASON_TOKEN }}
       run: |
         python clc.py "$JASON_TOKEN" "$JASON_SESSION_COOKIE"
