@@ -2,9 +2,11 @@ name: Weekly Booking
 
 on:
   schedule:
-    # - cron: '45 0 * * *'
+    - cron: '45 0 * * *'
     # - cron: '25 22 * * *'
-    - cron: '30 14 * * *'
+    # - cron: '30 14 * * *'
+  workflow_dispatch:
+  
 jobs:
   booking:
     runs-on: ubuntu-latest
