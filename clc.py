@@ -11,7 +11,6 @@ def book_clc_room(weekday, token, cookie):
         return current_date + datetime.timedelta(days=days_ahead)
 
     def create_payload(date, weekday):
-        print(date, weekday)
         start_time, end_time = 45000, 52200
         if weekday == 1 or 3:
             start_time = 37800
