@@ -22,7 +22,7 @@ def book_clc_room(weekday, token, cookie):
 
     url = "https://booking.sauder.ubc.ca/clc/edit_entry_handler.php"
 
-    payload = create_payload(target)
+    payload = create_payload(target, weekday)
 
     headers = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
