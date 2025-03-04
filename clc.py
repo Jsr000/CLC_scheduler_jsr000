@@ -12,6 +12,7 @@ def book_clc_room(weekday, token, cookie):
 
     def create_payload(date, weekday):
         start_time, end_time = 45000, 52200
+        print(date)
         if weekday == 1 or 3:
             start_time = 37800
             end_time = 45000
