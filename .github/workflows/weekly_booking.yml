@@ -2,8 +2,9 @@ name: Weekly Booking
 
 on:
   schedule:
-    - cron: '45 0 * * *' #12:45 am UTC
+    # - cron: '45 0 * * *' #12:45 am UTC
     # - cron: '30 8 * * *' #8:30 am UTC
+    - cron: '0 * * * *' #every hour
   workflow_dispatch:
   
 jobs:
